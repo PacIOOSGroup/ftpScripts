@@ -15,13 +15,13 @@ def main():
     try:
         os.chdir(filedir)
     except:
-		print("some error accessing directory (does it exist?)")
-		print("you tried:%s" % filedir)
-		try:
-			os.makedir(filedir)
-		except:
-			print("failed to create directory, perhaps out of space or lack permissions.")
-			sys.exit()
+        print("some error accessing directory (does it exist?)")
+        print("you tried:%s" % filedir)
+        try:
+            os.makedir(filedir)
+        except:
+            print("failed to create directory, perhaps out of space or lack permissions.") 
+            sys.exit()
 
     filename = str(now.year)+"-"+str(now.month)+"-"+str(now.day)+".nc"
     ftp.cwd("/hafner/SCUD/PACIOOS/" + str(now.year))
