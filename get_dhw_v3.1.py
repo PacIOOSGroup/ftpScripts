@@ -38,28 +38,28 @@ def main():
         ftp.cwd(str(now.year))
         with open(filenames[i], "wb") as file: ftp.retrbinary("RETR " + filenames[i], file.write)
     
-    run("/usr/bin/ncpdq", "-a", "-lat", filenames[0], "temp.nc")
-    run("mv", "temp.nc", filenames[0])
+    run(["/usr/bin/ncpdq", "-a", "-lat", filenames[0], "temp.nc"])
+    run(["mv", "temp.nc", filenames[0]])
 
-    run("cp", filenames[1], outfile)
+    run(["cp", filenames[1], outfile)
 
-    run("/usr/bin/ncks", "-A", filenames[2], outfile)
-    run("/usr/bin/ncks", "-A", filenames[0], outfile)
-    run("/usr/bin/ncks", "-A", filenames[3], outfile)
-    run("/usr/bin/ncks", "-A", filenames[4], outfile)
+    run(["/usr/bin/ncks", "-A", filenames[2], outfile])
+    run(["/usr/bin/ncks", "-A", filenames[0], outfile])
+    run(["/usr/bin/ncks", "-A", filenames[3], outfile])
+    run(["/usr/bin/ncks", "-A", filenames[4], outfile])
 
-    run("/usr/bin/ncrename", "-v", "analysed_sst,CRW_SST", outfile)
-    run("/usr/bin/ncrename", "-v", "bleaching_alert_area,CRW_BAA", outfile)
-    run("/usr/bin/ncrename", "-v", "hotspot,CRW_HOTSPOT", outfile)
-    run("/usr/bin/ncrename", "-v", "degree_heating_week,CRW_DHW", outfile)
-    run("/usr/bin/ncrename", "-v", "sea_surface_temperature_anomaly,CRW_SSTANOMALY", outfile)
-    run("/usr/bin/ncrename", "-v", "sea_ice_fraction,CRW_SEAICE", outfile)
-    run("/usr/bin/ncrename", "-v", "mask,surface_flag", outfile)
+    run(["/usr/bin/ncrename", "-v", "analysed_sst,CRW_SST", outfile])
+    run(["/usr/bin/ncrename", "-v", "bleaching_alert_area,CRW_BAA", outfile])
+    run(["/usr/bin/ncrename", "-v", "hotspot,CRW_HOTSPOT", outfile])
+    run(["/usr/bin/ncrename", "-v", "degree_heating_week,CRW_DHW", outfile])
+    run(["/usr/bin/ncrename", "-v", "sea_surface_temperature_anomaly,CRW_SSTANOMALY", outfile])
+    run(["/usr/bin/ncrename", "-v", "sea_ice_fraction,CRW_SEAICE", outfile])
+    run(["/usr/bin/ncrename", "-v", "mask,surface_flag", outfile])
     
-    run("/usr/bin/ncatted", "-O", "-a", "epsg_code,crs,o,c,EPSG:4326", outfile)
-    run("/usr/bin/ncatted", "-O", "-a", "geospatial_bounds_crs,global,o,c,EPSG:4326", outfile)
+    run(["/usr/bin/ncatted", "-O", "-a", "epsg_code,crs,o,c,EPSG:4326", outfile])
+    run(["/usr/bin/ncatted", "-O", "-a", "geospatial_bounds_crs,global,o,c,EPSG:4326", outfile])
 
-    run("mv", outfile, str(now.year))
+    run(["mv", outfile, str(now.year)])
 
 
 
