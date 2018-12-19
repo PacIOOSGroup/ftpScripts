@@ -41,7 +41,7 @@ def main():
     run(["/usr/bin/ncpdq", "-a", "-lat", filenames[0], "temp.nc"])
     run(["mv", "temp.nc", filenames[0]])
 
-    run(["cp", filenames[1], outfile)
+    run(["cp", filenames[1], outfile])
 
     run(["/usr/bin/ncks", "-A", filenames[2], outfile])
     run(["/usr/bin/ncks", "-A", filenames[0], outfile])
