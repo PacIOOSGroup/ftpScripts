@@ -60,6 +60,8 @@ def main():
     run(["/usr/bin/ncatted", "-O", "-a", "geospatial_bounds_crs,global,o,c,EPSG:4326", outfile])
 
     run(["mv", outfile, str(now.year)])
+    run(["rm", "*.nc"])
+
 
 
 
